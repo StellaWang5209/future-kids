@@ -42,7 +42,7 @@ contract DeployAll is Script {
         // 5) Configure the on-chain chapter answers (public by design:
         //    the answer IS the lesson).
         proof.setChapterAnswerHash(1, keccak256(abi.encodePacked(vm.envOr("CHAPTER1_ANSWER", string("trust")))));
-        proof.setChapterAnswerHash(2, keccak256(abi.encodePacked(vm.envOr("CHAPTER2_ANSWER", unicode"2100万"))));
+        proof.setChapterAnswerHash(2, keccak256(abi.encodePacked(vm.envOr("CHAPTER2_ANSWER", string(unicode"2100万")))));
         proof.setChapterAnswerHash(3, keccak256(abi.encodePacked(vm.envOr("CHAPTER3_ANSWER", string("proof-of-work")))));
         proof.setChapterAnswerHash(4, keccak256(abi.encodePacked(vm.envOr("CHAPTER4_ANSWER", string("proof-of-stake")))));
 
