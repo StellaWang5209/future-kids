@@ -3,6 +3,7 @@ pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
 import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol";
+import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 import {AchievementBadge} from "../src/AchievementBadge.sol";
 import {LearningProof} from "../src/LearningProof.sol";
 import {IERC5192} from "../src/interfaces/IERC5192.sol";
@@ -46,7 +47,7 @@ contract AchievementBadgeTest is Test {
         assertEq(badge.badgeName(AchievementBadge.BadgeType.BlockchainExplorer), "Blockchain Explorer");
         assertEq(
             badge.tokenURI(1),
-            string(abi.encodePacked("ipfs://badge-metadata/", uint256(1), ".json"))
+            string(abi.encodePacked("ipfs://badge-metadata/", Strings.toString(1), ".json"))
         );
     }
 
@@ -68,12 +69,13 @@ contract AchievementBadgeTest is Test {
     }
 
     function test_MintTo_RequiresMinterRole() public {
+        bytes32 minterRole = badge.MINTER_ROLE(); // hoisted: view calls consume vm.prank
         vm.prank(kid);
         vm.expectRevert(
             abi.encodeWithSelector(
                 IAccessControl.AccessControlUnauthorizedAccount.selector,
                 kid,
-                badge.MINTER_ROLE()
+                minterRole
             )
         );
         badge.mintTo(kid, AchievementBadge.BadgeType.BitcoinPioneer);
