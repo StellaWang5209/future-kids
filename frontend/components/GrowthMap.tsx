@@ -13,7 +13,13 @@ import { contractAddresses, contractsConfigured } from "@/lib/wagmi";
  * learning proofs. Each entry can carry an on-chain tx hash that anyone
  * can independently verify.
  */
-export function GrowthMap({ onBack, onEnterChapter }: { onBack: () => void; onEnterChapter: (chapterId: number) => void }) {
+export function GrowthMap({
+  onBack,
+  onEnterChapter,
+}: {
+  onBack?: () => void;
+  onEnterChapter?: (chapterId: number) => void;
+}) {
   const { progress } = useProgress();
   const { address, chain } = useAccount();
 
@@ -25,9 +31,11 @@ export function GrowthMap({ onBack, onEnterChapter }: { onBack: () => void; onEn
   return (
     <div className="growth">
       <header className="growth-header">
-        <button className="btn btn-ghost" onClick={onBack}>
-          ← 返回星球地图
-        </button>
+        {onBack && (
+          <button className="btn btn-ghost" onClick={onBack}>
+            ← 返回星球地图
+          </button>
+        )}
         <h1>我的未来成长记录</h1>
         <p className="growth-sub">不是资产清单，而是一份可以永远保存的学习故事。</p>
       </header>
@@ -57,7 +65,7 @@ export function GrowthMap({ onBack, onEnterChapter }: { onBack: () => void; onEn
                 key={b.type}
                 className={`badge-card ${earned ? "earned" : "locked"}`}
                 style={{ ["--pc" as string]: chapter.color }}
-                onClick={() => (earned ? undefined : onEnterChapter(b.chapterId))}
+                onClick={() => (earned ? undefined : onEnterChapter?.(b.chapterId))}
                 title={earned ? "已获得" : "去完成这一章"}
               >
                 <div className="badge-emoji">{earned ? b.emoji : "❔"}</div>

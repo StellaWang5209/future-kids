@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import "@rainbow-me/rainbowkit/styles.css";
 import "./globals.css";
 import "./games.css";
+import "./pages.css";
 import { Providers } from "@/components/Providers";
+import { NavBar } from "@/components/NavBar";
 
 export const metadata: Metadata = {
   title: "未来小孩 Future Kids — 链上数字文明教育",
@@ -14,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="zh-CN">
       <body>
+        <NavBar />
         <Providers>{children}</Providers>
       </body>
     </html>

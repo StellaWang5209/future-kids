@@ -86,11 +86,28 @@ export const badgeAbi = [
     inputs: [{ name: "owner", type: "address" }],
     outputs: [{ name: "", type: "uint256" }],
   },
+] as const;
+
+export const registryAbi = [
   {
     type: "function",
-    name: "badgeName",
+    name: "totalContributions",
     stateMutability: "view",
-    inputs: [{ name: "badgeType", type: "uint8" }],
-    outputs: [{ name: "", type: "string" }],
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "totalPoints",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "uint32" }],
+  },
+  {
+    type: "function",
+    name: "contributionsByCategory",
+    stateMutability: "view",
+    inputs: [{ name: "category", type: "uint8" }],
+    outputs: [{ name: "", type: "uint32" }],
   },
 ] as const;

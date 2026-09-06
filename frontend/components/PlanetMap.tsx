@@ -72,8 +72,31 @@ export function PlanetMap({
         })}
       </div>
 
+      <div className="roadmap-row">
+        {[
+          { emoji: "🌐", name: "Ethereum 世界", tag: "设计中" },
+          { emoji: "📦", name: "IPFS 星环", tag: "规划中" },
+          { emoji: "🏛️", name: "DAO 广场", tag: "规划中" },
+        ].map((r) => (
+          <div className="planet locked roadmap" key={r.name}>
+            <span className="planet-emoji">{r.emoji}</span>
+            <span className="planet-name">{r.name}</span>
+            <span className="planet-title">敬请期待</span>
+            <span className="planet-status">{r.tag}</span>
+          </div>
+        ))}
+      </div>
+
       <div className="map-footer">
         <span className="map-hint">💡 没有钱包也能玩全部内容 —— 链上记录是可选的加分旅程。</span>
+        <div className="map-links">
+          <a className="btn btn-ghost" href="/contributors">
+            🌟 贡献者大厅
+          </a>
+          <a className="btn btn-ghost" href="/about">
+            💡 关于未来星球
+          </a>
+        </div>
       </div>
     </div>
   );

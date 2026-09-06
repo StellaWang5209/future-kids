@@ -36,3 +36,7 @@ export const contractAddresses = {
 export const contractsConfigured = Boolean(
   contractAddresses.identity && contractAddresses.proof && contractAddresses.badge
 );
+
+/** ContributionRegistry is optional and read-mostly from the frontend. */
+export const registryAddress = process.env.NEXT_PUBLIC_REGISTRY_ADDRESS ?? "";
+export const registryConfigured = Boolean(registryAddress);
