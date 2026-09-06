@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
+import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol";
 import {AchievementBadge} from "../src/AchievementBadge.sol";
 import {LearningProof} from "../src/LearningProof.sol";
 import {IERC5192} from "../src/interfaces/IERC5192.sol";
@@ -71,7 +71,7 @@ contract AchievementBadgeTest is Test {
         vm.prank(kid);
         vm.expectRevert(
             abi.encodeWithSelector(
-                AccessControl.AccessControlUnauthorizedAccount.selector,
+                IAccessControl.AccessControlUnauthorizedAccount.selector,
                 kid,
                 badge.MINTER_ROLE()
             )
