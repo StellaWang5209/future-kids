@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
+import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol";
 import {LearningProof} from "../src/LearningProof.sol";
 
 contract LearningProofTest is Test {
@@ -26,7 +26,7 @@ contract LearningProofTest is Test {
         vm.prank(kid);
         vm.expectRevert(
             abi.encodeWithSelector(
-                AccessControl.AccessControlUnauthorizedAccount.selector,
+                IAccessControl.AccessControlUnauthorizedAccount.selector,
                 kid,
                 proof.DEFAULT_ADMIN_ROLE()
             )
@@ -89,7 +89,7 @@ contract LearningProofTest is Test {
         vm.prank(kid);
         vm.expectRevert(
             abi.encodeWithSelector(
-                AccessControl.AccessControlUnauthorizedAccount.selector,
+                IAccessControl.AccessControlUnauthorizedAccount.selector,
                 kid,
                 proof.RECORDER_ROLE()
             )
@@ -113,7 +113,7 @@ contract LearningProofTest is Test {
         proof.setChapterAnswerHash(5, h);
 
         vm.prank(kid);
-        proof.recordCompletion(5, answer);
+        proof.recordCompletion(5, string(answer));
 
         assertTrue(proof.hasCompleted(kid, 5));
         assertEq(proof.completionCount(kid), 1);
