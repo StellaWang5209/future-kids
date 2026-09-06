@@ -1,0 +1,21 @@
+{
+  "name": "@future-kids/backend",
+  "version": "0.1.0",
+  "description": "Optional indexer & metadata service for Future Kids. The chain is the source of truth; this service only makes queries friendlier.",
+  "license": "MIT",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "db:init": "psql $DATABASE_URL -f db/schema.sql"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

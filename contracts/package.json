@@ -1,0 +1,17 @@
+{
+  "name": "@future-kids/contracts",
+  "version": "0.1.0",
+  "description": "Future Kids on-chain education contracts: identity, soulbound achievement badges, learning proofs, contribution registry",
+  "license": "MIT",
+  "scripts": {
+    "build": "forge build",
+    "test": "forge test -vvv",
+    "verify:local": "node scripts/verify-local.mjs"
+  },
+  "devDependencies": {
+    "@openzeppelin/contracts": "5.0.2",
+    "ethers": "6.13.4",
+    "ganache": "7.9.2",
+    "solc": "0.8.26"
+  }
+}
