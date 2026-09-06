@@ -2,6 +2,7 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
+import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 import {FutureKidsIdentity} from "../src/FutureKidsIdentity.sol";
 import {LearningProof} from "../src/LearningProof.sol";
 import {IERC5192} from "../src/interfaces/IERC5192.sol";
@@ -37,7 +38,7 @@ contract FutureKidsIdentityTest is Test {
         assertEq(identity.totalIdentities(), 1);
         assertEq(
             identity.tokenURI(tokenId),
-            string(abi.encodePacked("ipfs://identity-metadata/", tokenId, ".json"))
+            string(abi.encodePacked("ipfs://identity-metadata/", Strings.toString(tokenId), ".json"))
         );
     }
 
