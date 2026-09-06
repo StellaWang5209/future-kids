@@ -16,12 +16,13 @@ contract ContributionRegistryTest is Test {
     }
 
     function test_RequiresRecorderRole() public {
+        bytes32 recorderRole = registry.RECORDER_ROLE(); // hoisted: view calls consume vm.prank
         vm.prank(stranger);
         vm.expectRevert(
             abi.encodeWithSelector(
                 IAccessControl.AccessControlUnauthorizedAccount.selector,
                 stranger,
-                registry.RECORDER_ROLE()
+                recorderRole
             )
         );
         registry.recordContribution(contributor, ContributionRegistry.Category.Code, keccak256("PR#1"), "https://github.com", 10);
