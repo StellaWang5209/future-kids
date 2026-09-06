@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import {Test} from "forge-std/Test.sol";
-import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
+import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol";
 import {ContributionRegistry} from "../src/ContributionRegistry.sol";
 
 contract ContributionRegistryTest is Test {
@@ -19,7 +19,7 @@ contract ContributionRegistryTest is Test {
         vm.prank(stranger);
         vm.expectRevert(
             abi.encodeWithSelector(
-                AccessControl.AccessControlUnauthorizedAccount.selector,
+                IAccessControl.AccessControlUnauthorizedAccount.selector,
                 stranger,
                 registry.RECORDER_ROLE()
             )
@@ -39,7 +39,7 @@ contract ContributionRegistryTest is Test {
 
         assertEq(registry.totalPoints(contributor), 10);
         assertEq(registry.contributionCount(contributor), 1);
-        assertEq(registry.totalContributions, 1);
+        assertEq(registry.totalContributions(), 1);
         assertEq(
             registry.contributionsByCategory(ContributionRegistry.Category.Code),
             1
