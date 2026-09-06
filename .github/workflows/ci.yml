@@ -20,7 +20,7 @@ jobs:
         uses: foundry-rs/foundry-toolchain@v1
 
       - name: Install forge-std (git submodules are not in the repo)
-        run: forge install foundry-rs/forge-std --no-commit
+        run: forge install foundry-rs/forge-std@v1.16.2 --no-commit
 
       - name: Install npm dependencies (OpenZeppelin via node_modules)
         run: npm install --no-audit --no-fund
