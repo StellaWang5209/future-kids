@@ -23,12 +23,13 @@ contract LearningProofTest is Test {
     }
 
     function test_NonAdminCannotConfigureChapterAnswer() public {
+        bytes32 adminRole = proof.DEFAULT_ADMIN_ROLE(); // hoisted: view calls consume vm.prank
         vm.prank(kid);
         vm.expectRevert(
             abi.encodeWithSelector(
                 IAccessControl.AccessControlUnauthorizedAccount.selector,
                 kid,
-                proof.DEFAULT_ADMIN_ROLE()
+                adminRole
             )
         );
         proof.setChapterAnswerHash(2, bytes32(uint256(1)));
@@ -82,16 +83,17 @@ contract LearningProofTest is Test {
     function test_RecordCompletion_AnswerTooLong() public {
         vm.prank(kid);
         vm.expectRevert(LearningProof.AnswerTooLong.selector);
-        proof.recordCompletion(1, "this answer is definitely much longer than sixty four bytes");
+        proof.recordCompletion(1, "this answer is definitely much longer than sixty four bytes, truly");
     }
 
     function test_RecordByRecorder_RequiresRole() public {
+        bytes32 recorderRole = proof.RECORDER_ROLE(); // hoisted: view calls consume vm.prank
         vm.prank(kid);
         vm.expectRevert(
             abi.encodeWithSelector(
                 IAccessControl.AccessControlUnauthorizedAccount.selector,
                 kid,
-                proof.RECORDER_ROLE()
+                recorderRole
             )
         );
         proof.recordByRecorder(kid, LearningProof.ProofKind.Challenge, 1, bytes32(uint256(42)));
