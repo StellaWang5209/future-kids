@@ -21,8 +21,8 @@ npm start                    # 默认 :4000
 | 方法 | 路径 | 说明 |
 |---|---|---|
 | GET | `/health` | 服务状态（含 DB / RPC 配置情况） |
-| GET | `/chapters` | 四章课程目录（含公开的知识钥匙） |
-| GET | `/metadata/badge/:type` | 徽章 ERC-721 元数据（0..3），供 IPFS pin |
+| GET | `/chapters` | 五章课程目录（含公开的知识钥匙） |
+| GET | `/metadata/badge/:type` | 徽章 ERC-721 元数据（0..4），供 IPFS pin |
 | GET | `/index/learner/:address` | 学习者成长摘要（匿名地址级） |
 | GET | `/index/recent?limit=20` | 全网最近学习证明（公共物品透明度） |
 | GET | `/ipfs/pin-instructions` | IPFS pinning 三步操作说明 |
@@ -31,7 +31,7 @@ npm start                    # 默认 :4000
 
 合约 `tokenURI` 指向 `ipfs://<base>/<tokenId>.json`。元数据是静态小文件：
 
-1. `curl localhost:4000/metadata/badge/0..3 > badge-{0..3}.json`
+1. `curl localhost:4000/metadata/badge/0..4 > badge-{0..4}.json`
 2. 用任意 provider pin（Pinata / web3.storage / 本地 Kubo）：`ipfs add badge-*.json`
 3. 一次性管理交易把 `AchievementBadge` 的 baseURI 设为 `ipfs://<目录CID>/`
 

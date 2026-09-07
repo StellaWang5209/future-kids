@@ -32,7 +32,7 @@ contract LearningProof is AccessControl, ReentrancyGuard {
         uint64 timestamp;    // when it happened
         bytes32 challengeHash; // keccak256 of the answered challenge (or supplied hash)
         ProofKind kind;
-        uint8 chapterId;     // 1..4 for the Future Planet Adventure chapters
+        uint8 chapterId;     // 1..5 for the Future Planet Adventure chapters
     }
 
     // ------------------------------------------------------------------ state

@@ -45,10 +45,14 @@ export function GrowthMap({
         <div className="level-info">
           <div className="level-name">当前等级：{level.name}</div>
           <div className="level-bar">
-            <div className="level-fill" style={{ width: `${(count / 4) * 100}%` }} />
+            <div className="level-fill" style={{ width: `${(count / CHAPTERS.length) * 100}%` }} />
           </div>
           <div className="level-next">
-            {nextLevel ? `完成 ${nextLevel.min - count} 个新世界 → ${nextLevel.name}` : "🎉 恭喜，你已是未来星球的守护者！"}
+            {nextLevel
+              ? `完成 ${nextLevel.min - count} 个新世界 → ${nextLevel.name}`
+              : count >= CHAPTERS.length
+                ? "🎉 太棒了！你点亮了未来星球的所有世界！"
+                : "🛡️ 你已是最高等级守护者 —— 但新的世界仍在等你探索！"}
           </div>
         </div>
       </section>

@@ -180,8 +180,8 @@ async function deploy(artifacts) {
     const registry = await deployContract("ContributionRegistry", deployer.address);
 
     // Chapter answers (public by design: the answer IS the lesson).
-    const answers = ["trust", "2100万", "proof-of-work", "proof-of-stake"];
-    for (let ch = 1; ch <= 4; ch++) {
+    const answers = ["trust", "2100万", "proof-of-work", "proof-of-stake", "smart-contract"];
+    for (let ch = 1; ch <= answers.length; ch++) {
         const hash = ethers.keccak256(ethers.toUtf8Bytes(answers[ch - 1]));
         await (await proof.setChapterAnswerHash(ch, hash)).wait();
     }
@@ -341,7 +341,7 @@ async function runTests() {
 
     console.log("\n== Integration: full Future Planet Adventure ==");
 
-    await check("journey: chapters 2-4, badges, Seed -> Guardian", async () => {
+    await check("journey: chapters 2-5, badges, Seed -> Guardian", async () => {
         const answers = ["2100万", "proof-of-work", "proof-of-stake"];
         for (let i = 0; i < 3; i++) {
             const chapter = i + 2;
@@ -349,13 +349,16 @@ async function runTests() {
             await (await kidBadge.mint(chapter - 1)).wait(); // badge types 1..3
             await (await kidIdentity.levelUp()).wait();      // Explorer, Builder, Guardian
         }
+        // Chapter 5 — Ethereum bonus world (level is capped at Guardian on-chain).
+        await (await kidProof.recordCompletion(5, "smart-contract")).wait();
+        await (await kidBadge.mint(4)).wait();               // Ethereum Builder
         assertEq(await identity.levelOf(1), 4n, "level==Guardian");
-        assertEq(await badge.balanceOf(kid.address), 4n, "4 badges");
-        assertEq(await proof.completionCount(kid.address), 4n, "4 chapters");
-        assertEq(await proof.proofCount(kid.address), 5n, "4 chapters + 1 challenge");
-        // kid owns tokens 1,3,4,5 (token 2 was minted to kid2 via mintTo)
+        assertEq(await badge.balanceOf(kid.address), 5n, "5 badges");
+        assertEq(await proof.completionCount(kid.address), 5n, "5 chapters");
+        assertEq(await proof.proofCount(kid.address), 6n, "5 chapters + 1 challenge");
+        // kid owns tokens 1,3,4,5,6 (token 2 was minted to kid2 via mintTo)
         assertEq(await badge.ownerOf(2), kid2.address, "kid2 keeps Bitcoin Pioneer");
-        for (const t of [1, 3, 4, 5]) {
+        for (const t of [1, 3, 4, 5, 6]) {
             assertEq(await badge.locked(t), true, `badge ${t} locked`);
             assertEq(await badge.ownerOf(t), kid.address, `badge ${t} owner`);
         }

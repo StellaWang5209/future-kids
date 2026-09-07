@@ -17,7 +17,7 @@
 | | |
 |---|---|
 | 🪪 **A private digital identity** 数字身份 | A pseudonym + wallet address only. No real name, birthday, or school — privacy is written into the contracts. 只有化名与地址，不记录任何真实个人信息。 |
-| 🎮 **Four story worlds** 四个故事世界 | Blockchain · Bitcoin · PoW · PoS, taught through interactive games. 通过互动游戏理解区块链、比特币、工作量证明与权益证明。 |
+| 🎮 **Five story worlds** 五个故事世界 | Blockchain · Bitcoin · PoW · PoS · Ethereum Smart Contracts, taught through interactive games. 通过互动游戏理解区块链、比特币、工作量证明、权益证明与智能合约。 |
 | 📜 **Learning proofs** 学习证明 | Completing a chapter records an on-chain proof (the chapter's "knowledge key" is hashed on-chain). 完成章节即在链上留下学习证明。 |
 | 🎖️ **Soulbound badges** 灵魂绑定的徽章 | ERC-721 badges locked to the learner forever (ERC-5192). They cannot be sold or transferred — they mean *you learned it*. 永久绑定、不可转让、不可买卖 —— 徽章的意义是「你真的学会了」。 |
 | 🗺️ **A growth map, not a wallet** 成长地图，而非资产页 | The UI says「我的未来成长记录」. There is no balance, no portfolio, no price. 界面只有成长记录，没有余额、没有行情。 |
@@ -49,12 +49,12 @@ All contracts: OpenZeppelin v5, `AccessControl`, `ReentrancyGuard`, custom error
 ```bash
 # 1. Frontend (Demo Mode needs nothing else)
 cd frontend && npm install && npm run dev
-# → http://localhost:3000 — the full 4-chapter journey, no wallet required
+# → http://localhost:3000 — the full 5-chapter journey, no wallet required
 
 # 2. Contracts
 cd contracts
 npm install                 # OpenZeppelin, solc-js, ganache, ethers
-npm run verify:local        # compile + deploy on an in-memory chain + 16 E2E checks
+npm run verify:local        # compile + deploy on an in-memory chain + 20 E2E checks
 # Foundry (in CI / on your machine):
 forge install foundry-rs/forge-std
 forge build && forge test -vvv

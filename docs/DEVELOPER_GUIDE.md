@@ -25,7 +25,7 @@
 ```
 
 Key decision: **the platform degrades gracefully**. With no backend and no wallet,
-the full 4-chapter journey works (Demo Mode). Every on-chain feature is additive.
+the full 5-chapter journey works (Demo Mode). Every on-chain feature is additive.
 
 ## 2. Contract design decisions
 
@@ -61,9 +61,9 @@ proof-gated**.
 
 `LearningProof.recordCompletion(chapterId, answer)` hashes the submitted answer
 against `chapterAnswerHash[chapterId]`. The answers are public (`trust`,
-`2100万`, `proof-of-work`, `proof-of-stake`) — the challenge is playing the
-chapter, not keeping a secret. This makes proofs verifiable and replayable by
-anyone, forever.
+`2100万`, `proof-of-work`, `proof-of-stake`, `smart-contract`) — the challenge is
+playing the chapter, not keeping a secret. This makes proofs verifiable and
+replayable by anyone, forever.
 
 ### 2.4 Privacy by schema
 

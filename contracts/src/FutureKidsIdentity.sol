@@ -25,7 +25,7 @@ contract FutureKidsIdentity is ERC721, AccessControl, IERC5192 {
         Sprout,   // 1 - completed 1 chapter
         Explorer, // 2 - completed 2 chapters
         Builder,  // 3 - completed 3 chapters
-        Guardian  // 4 - completed all 4 chapters
+        Guardian  // 4 - completed all main chapters (max on-chain level)
     }
 
     /// @notice Minimal identity data. Nothing here identifies a real child.

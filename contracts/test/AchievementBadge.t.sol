@@ -23,6 +23,7 @@ contract AchievementBadgeTest is Test {
 
         proof.setChapterAnswerHash(1, keccak256(abi.encodePacked("trust")));
         proof.setChapterAnswerHash(2, keccak256(abi.encodePacked(unicode"2100万")));
+        proof.setChapterAnswerHash(5, keccak256(abi.encodePacked("smart-contract")));
     }
 
     function test_Mint_RevertsWithoutProof() public {
@@ -66,6 +67,19 @@ contract AchievementBadgeTest is Test {
         vm.stopPrank();
 
         assertEq(badge.balanceOf(kid), 1); // still exactly one
+    }
+
+    function test_Mint_EthereumBuilder_AfterChapter5() public {
+        vm.prank(kid2);
+        proof.recordCompletion(5, "smart-contract");
+
+        vm.prank(kid2);
+        badge.mint(AchievementBadge.BadgeType.EthBuilder);
+
+        assertTrue(badge.hasBadge(kid2, AchievementBadge.BadgeType.EthBuilder));
+        assertEq(badge.balanceOf(kid2), 1);
+        assertEq(uint8(badge.badgeTypeOf(1)), uint8(AchievementBadge.BadgeType.EthBuilder));
+        assertEq(badge.badgeName(AchievementBadge.BadgeType.EthBuilder), "Ethereum Builder");
     }
 
     function test_MintTo_RequiresMinterRole() public {

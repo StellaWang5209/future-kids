@@ -8,8 +8,8 @@ export type QuizQuestion = {
 };
 
 export type Chapter = {
-  id: number; // 1..4 — matches on-chain chapterId
-  badgeType: number; // 0..3 — matches on-chain BadgeType
+  id: number; // 1..5 — matches on-chain chapterId
+  badgeType: number; // 0..4 — matches on-chain BadgeType
   title: string;
   titleEn: string;
   emoji: string;
@@ -173,7 +173,7 @@ export const CHAPTERS: Chapter[] = [
     answer: "proof-of-stake",
     answerHint: "提示：用押金和工作诚信来证明自己（英文小写，带连字符）",
     story: [
-      "最后一站：PoS 世界——权益证明的守护者城堡。",
+      "第四站：PoS 世界——权益证明的守护者城堡。",
       "想成为守护者，要先「质押」自己的筹码作为诚信押金：诚实工作有奖励，捣乱就会被罚没。",
       "以太坊用 PoS 把能耗降低了 99.9% 以上——守护网络，也守护地球。",
     ],
@@ -210,6 +210,54 @@ export const CHAPTERS: Chapter[] = [
       },
     ],
   },
+  {
+    id: 5,
+    badgeType: 4,
+    title: "以太坊世界 · 智能合约工坊",
+    titleEn: "Ethereum World · Smart Contract Workshop",
+    emoji: "🤖",
+    color: "#6e56cf",
+    world: "Ethereum World",
+    answer: "smart-contract",
+    answerHint: "提示：以太坊上一种「规则写死、自动执行、谁也违约不了」的程序（英文小写，带连字符）",
+    story: [
+      "第五站：以太坊世界——全世界小朋友共同使用的「公共计算机」。",
+      "在这里，人们可以用代码写出一台神奇的「自动售货机」：投币就出货，规则公开透明，连老板都不能偷偷改价。",
+      "这种装在区块链上的自动售货机，就叫做智能合约（Smart Contract）。",
+    ],
+    quiz: [
+      {
+        q: "智能合约最像生活中的什么？",
+        options: [
+          "一台规则写死、自动出货、没人能中途改价的自动售货机",
+          "一个需要店员时刻看着的柜台",
+          "一张写在纸上的口头承诺",
+        ],
+        correct: 0,
+        explain: "智能合约 = 代码版自动售货机：条件满足就自动执行，任何人都无法单方面违约或改规则。",
+      },
+      {
+        q: "为什么合约部署后「规则就不能被偷偷改掉」？",
+        options: [
+          "合约的代码和状态公开存在区块链上，任何人无法单方面篡改",
+          "因为没人知道合约的地址",
+          "因为写代码的人签了保密协议",
+        ],
+        correct: 0,
+        explain: "合约存放在区块链上、全网共同验证——像魔法记录本一样，改一处，后面全部对不上。",
+      },
+      {
+        q: "谁可以使用运行在以太坊上的 DApp（去中心化应用）？",
+        options: [
+          "只有以太坊的开发人员",
+          "任何有一台能联网设备的人，直接就能用，没有中间商",
+          "必须经过某家公司注册审核",
+        ],
+        correct: 1,
+        explain: "以太坊是「公共的」：没有公司总部，没有开关，任何人都能直接调用上面的程序。",
+      },
+    ],
+  },
 ];
 
 export function chapterById(id: number): Chapter {
@@ -237,4 +285,5 @@ export const BADGES = [
   { type: 1, name: "比特币先锋 Bitcoin Pioneer", emoji: "🪙", chapterId: 2 },
   { type: 2, name: "PoW 建造者 PoW Builder", emoji: "⛏️", chapterId: 3 },
   { type: 3, name: "PoS 守护者 PoS Guardian", emoji: "🛡️", chapterId: 4 },
+  { type: 4, name: "以太坊建造者 Ethereum Builder", emoji: "🤖", chapterId: 5 },
 ];

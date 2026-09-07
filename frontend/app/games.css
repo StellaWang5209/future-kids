@@ -338,3 +338,174 @@
   margin-bottom: 6px;
   animation: gk-popin 0.3s ease both;
 }
+
+/* ---------- Ch5: Ethereum smart-contract workshop ---------- */
+@keyframes eth-rocket-up {
+  0% { transform: translateY(18px) scale(0.9); opacity: 0; }
+  35% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-90px) scale(1.15); opacity: 0.9; }
+}
+.eth-build-line {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 0.6rem 0 1rem;
+}
+.eth-build-step {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: #fff;
+  border: 2px dashed #d1d5db;
+  border-radius: 50%;
+  filter: grayscale(1);
+  opacity: 0.45;
+  transition: all 0.25s ease;
+}
+.eth-build-step.on {
+  filter: none;
+  opacity: 1;
+  border: 2px solid #6e56cf;
+  box-shadow: 0 0 0 4px rgba(110, 86, 207, 0.16);
+  animation: gk-popin 0.3s ease both;
+}
+.eth-blueprint-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin: 1rem 0;
+}
+.eth-brick {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 3px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 1.1rem 1.3rem;
+  min-width: 190px;
+  max-width: 230px;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.eth-brick:hover {
+  transform: translateY(-4px);
+  border-color: var(--pc, #6e56cf);
+  box-shadow: 0 10px 22px rgba(110, 86, 207, 0.16);
+}
+.eth-brick.done {
+  border-color: #22a06b;
+  background: #ecfdf5;
+  cursor: default;
+  animation: gk-popin 0.3s ease both;
+}
+.eth-brick-emoji { font-size: 2.2rem; }
+.eth-brick-name { font-size: 1.05rem; }
+.eth-brick-note { font-size: 0.76rem; color: #6b7280; text-align: center; }
+.eth-brick-order { font-size: 0.72rem; font-weight: 700; color: #166534; }
+.eth-wrong {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #b45309;
+  background: #fffbeb;
+  border: 2px solid #fcd34d;
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  max-width: 480px;
+  margin: 0.4rem auto;
+}
+.eth-rocket-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  min-height: 150px;
+  justify-content: flex-end;
+  padding: 1rem;
+  background: linear-gradient(180deg, #f3f0ff 0%, #fff 70%);
+  border: 3px dashed #c4b5fd;
+  border-radius: 18px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+.eth-rocket { font-size: 3.2rem; transition: transform 0.2s ease; }
+.eth-launching .eth-rocket { animation: eth-rocket-up 1.5s ease-in forwards; }
+.eth-launching { border-color: #8b5cf6; }
+.eth-addr {
+  text-align: center;
+  background: #fff;
+  border: 2px solid #6e56cf;
+  border-radius: 14px;
+  padding: 0.8rem 1.2rem;
+  font-weight: 700;
+}
+.eth-addr-code {
+  display: block;
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  color: #6e56cf;
+  margin-top: 4px;
+}
+.eth-machine {
+  position: relative;
+  background: #fff;
+  border: 3px solid #c4b5fd;
+  border-radius: 22px;
+  padding: 1.2rem;
+  max-width: 480px;
+  margin: 1rem auto;
+}
+.eth-machine.gk-pop-bad { border-color: #ef4444; }
+.eth-dispense { border-color: #22a06b; box-shadow: 0 0 0 5px rgba(34, 160, 107, 0.14); }
+.eth-machine-top { display: flex; align-items: center; gap: 10px; }
+.eth-machine-emoji { font-size: 2.4rem; }
+.eth-machine-addr {
+  font-family: ui-monospace, monospace;
+  font-size: 0.74rem;
+  color: #6e56cf;
+}
+.eth-machine-rules {
+  margin-top: 0.6rem;
+  background: #f3f0ff;
+  border-radius: 12px;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.86rem;
+  color: #4c3a96;
+}
+.eth-slot {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 0.8rem 0 0.6rem;
+}
+.eth-candy {
+  width: 54px;
+  height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  background: #fff;
+  border: 2px dashed #e5e7eb;
+  border-radius: 14px;
+}
+.eth-candy.taken {
+  border: 2px solid #c4b5fd;
+  animation: gk-popin 0.3s ease both;
+}
+.eth-coins { text-align: center; font-size: 1rem; color: #57534e; }
+.eth-coins b { color: #b45309; font-size: 1.2rem; }
+.eth-buzz {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #dc2626;
+  margin-top: 0.6rem;
+}

@@ -44,6 +44,7 @@ const CHAPTERS = [
   { id: 2, badgeType: 1, world: "Bitcoin World", answer: "2100万", title: "比特币世界 · 星星矿场" },
   { id: 3, badgeType: 2, world: "PoW World", answer: "proof-of-work", title: "PoW 世界 · 算力竞技场" },
   { id: 4, badgeType: 3, world: "PoS World", answer: "proof-of-stake", title: "PoS 世界 · 守护者城堡" },
+  { id: 5, badgeType: 4, world: "Ethereum World", answer: "smart-contract", title: "以太坊世界 · 智能合约工坊" },
 ];
 
 app.get("/chapters", (_req, res) => res.json({ chapters: CHAPTERS }));
@@ -63,6 +64,7 @@ app.get("/metadata/badge/:badgeType", (req, res) => {
     { name: "Bitcoin Pioneer", nameZh: "比特币先锋", description: "Completed Chapter 2: understood Bitcoin's 21 million cap and halving.", chapterId: 2 },
     { name: "PoW Builder", nameZh: "PoW 建造者", description: "Completed Chapter 3: understood Proof of Work, mining and its energy cost.", chapterId: 3 },
     { name: "PoS Guardian", nameZh: "PoS 守护者", description: "Completed Chapter 4: understood Proof of Stake, staking and slashing.", chapterId: 4 },
+    { name: "Ethereum Builder", nameZh: "以太坊建造者", description: "Completed Chapter 5: understood Ethereum smart contracts as unstoppable, rule-bound programs.", chapterId: 5 },
   ];
   const b = badges[type];
   if (!b) return res.status(404).json({ error: "unknown badgeType" });
@@ -119,7 +121,7 @@ app.get("/index/recent", async (req, res) => {
 // ------------------------------------------------------------- IPFS notes
 /**
  * Pinning workflow (see README):
- *   1. curl /metadata/badge/0..3 > badge-{0..3}.json
+ *   1. curl /metadata/badge/0..4 > badge-{0..4}.json
  *   2. pin with your provider (web3.storage / Pinata / local Kubo):
  *        ipfs add badge-*.json
  *   3. set contract baseURI to ipfs://<dirCID>/ (or per-token CID)

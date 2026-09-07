@@ -25,7 +25,7 @@ const PROMISES = [
 ];
 
 const ROADMAP = [
-  { emoji: "🌐", name: "Ethereum 世界", status: "设计中", desc: "智能合约是怎么运行的？Gas、EVM 与去中心化应用。" },
+  { emoji: "🌐", name: "Ethereum 世界", status: "已上线", desc: "智能合约是怎么运行的？Gas、EVM 与去中心化应用 —— 现在就去第 5 站亲自搭建一台合约售货机！" },
   { emoji: "📦", name: "IPFS 星环", status: "规划中", desc: "文件不放在一台服务器上，也能永远存在？" },
   { emoji: "🏛️", name: "DAO 广场", status: "规划中", desc: "一群互不相识的人，如何一起做决定？" },
   { emoji: "🛡️", name: "Guardian 模式", status: "研究中", desc: "基于 ERC-4337 账户抽象：家长作为守护人，帮孩子安全地管理链上身份。" },
@@ -94,7 +94,7 @@ export default function AboutPage() {
       <section className="card">
         <h2>🛠️ 开发者</h2>
         <p>
-          仓库结构：<code>contracts/</code>（4 个 Solidity 合约 + Foundry 测试）、<code>frontend/</code>（Next.js 14 + wagmi v2）、
+          仓库结构：<code>contracts/</code>（4 个 Solidity 合约 + Foundry 测试）、<code>frontend/</code>（Next.js 14 + wagmi v2，5 章互动课程）、
           <code>backend/</code>（索引与元数据服务）、<code>docs/</code>（双语指南）。CI 自动跑全套合约测试。
         </p>
         <p>

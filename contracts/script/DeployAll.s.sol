@@ -45,6 +45,7 @@ contract DeployAll is Script {
         proof.setChapterAnswerHash(2, keccak256(abi.encodePacked(vm.envOr("CHAPTER2_ANSWER", string(unicode"2100万")))));
         proof.setChapterAnswerHash(3, keccak256(abi.encodePacked(vm.envOr("CHAPTER3_ANSWER", string("proof-of-work")))));
         proof.setChapterAnswerHash(4, keccak256(abi.encodePacked(vm.envOr("CHAPTER4_ANSWER", string("proof-of-stake")))));
+        proof.setChapterAnswerHash(5, keccak256(abi.encodePacked(vm.envOr("CHAPTER5_ANSWER", string("smart-contract")))));
 
         vm.stopBroadcast();
 

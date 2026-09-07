@@ -34,7 +34,8 @@ export function PlanetMap({
           <div>
             <div className="map-name">{identity?.pseudonym ?? "小探险家"}</div>
             <div className="map-stats">
-              已点亮 {count}/4 个星球 · {count === 4 ? "守护者降临 🛡️" : "旅程继续…"}
+              已点亮 {count}/{CHAPTERS.length} 个星球 ·{" "}
+              {count === CHAPTERS.length ? "全图点亮，太了不起 ✨" : "旅程继续…"}
             </div>
           </div>
         </div>
@@ -74,9 +75,9 @@ export function PlanetMap({
 
       <div className="roadmap-row">
         {[
-          { emoji: "🌐", name: "Ethereum 世界", tag: "设计中" },
           { emoji: "📦", name: "IPFS 星环", tag: "规划中" },
           { emoji: "🏛️", name: "DAO 广场", tag: "规划中" },
+          { emoji: "✨", name: "更多世界", tag: "由你创造" },
         ].map((r) => (
           <div className="planet locked roadmap" key={r.name}>
             <span className="planet-emoji">{r.emoji}</span>

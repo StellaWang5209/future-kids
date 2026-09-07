@@ -14,6 +14,7 @@ import { BlockchainGame } from "@/components/games/BlockchainGame";
 import { BitcoinGame } from "@/components/games/BitcoinGame";
 import { PowGame } from "@/components/games/PowGame";
 import { PosGame } from "@/components/games/PosGame";
+import { EthereumGame } from "@/components/games/EthereumGame";
 
 type Screen = "landing" | "identity" | "map" | "game" | "game-done" | "growth";
 
@@ -27,6 +28,8 @@ function GameFor({ chapter, onComplete }: { chapter: Chapter; onComplete: () => 
       return <PowGame chapter={chapter} onComplete={onComplete} />;
     case 4:
       return <PosGame chapter={chapter} onComplete={onComplete} />;
+    case 5:
+      return <EthereumGame chapter={chapter} onComplete={onComplete} />;
     default:
       return null;
   }
@@ -64,7 +67,7 @@ export default function Home() {
         <h1 className="landing-logo">🌍 未来星球</h1>
         <p className="landing-tagline">Future Kids · 一场属于孩子的链上数字文明冒险</p>
         <p className="landing-desc">
-          四个星球、四次冒险：理解区块链、比特币、PoW 与 PoS。
+          五个世界、五次冒险：从区块链、比特币、PoW、PoS，一路闯到以太坊与智能合约。
           每一份努力都会变成一枚<strong>永久绑定、无法买卖</strong>的成长徽章 ——
           因为知识不属于市场，它属于你。
         </p>

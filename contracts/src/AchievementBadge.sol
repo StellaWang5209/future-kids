@@ -16,12 +16,13 @@ import {ILearningProof} from "./interfaces/ILearningProof.sol";
 contract AchievementBadge is ERC721, AccessControl, ReentrancyGuard, IERC5192 {
     // ------------------------------------------------------------------ types
 
-    /// @notice The four launch badges, one per chapter.
+    /// @notice Launch badges, one per chapter (chapterId = badgeType + 1).
     enum BadgeType {
         BlockchainExplorer, // 0 - Chapter 1: Blockchain World (Magic Notebook)
         BitcoinPioneer,     // 1 - Chapter 2: Bitcoin World
         PowBuilder,         // 2 - Chapter 3: PoW World
-        PosGuardian         // 3 - Chapter 4: PoS World
+        PosGuardian,        // 3 - Chapter 4: PoS World
+        EthBuilder          // 4 - Chapter 5: Ethereum World (Smart Contract Workshop)
     }
 
     // ------------------------------------------------------------------ state
@@ -112,6 +113,7 @@ contract AchievementBadge is ERC721, AccessControl, ReentrancyGuard, IERC5192 {
         if (badgeType == BadgeType.BitcoinPioneer) return "Bitcoin Pioneer";
         if (badgeType == BadgeType.PowBuilder) return "PoW Builder";
         if (badgeType == BadgeType.PosGuardian) return "PoS Guardian";
+        if (badgeType == BadgeType.EthBuilder) return "Ethereum Builder";
         return "Unknown";
     }
 
